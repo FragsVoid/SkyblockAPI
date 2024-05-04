@@ -1,12 +1,17 @@
 package me.skyblockapi.items;
 
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import static me.skyblockapi.message.MessageManager.hexTranslator;
 
@@ -30,6 +35,20 @@ public class ItemCreator {
         ItemMeta meta = itemStack.getItemMeta();
         meta.displayName(Component.text(hexTranslator(name)));
         itemStack.setItemMeta(meta);
+
+        return itemStack;
+    }
+
+    private ItemStack createCustomSkull(String base64Str) {
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD);
+
+        PlayerProfile profile = Bukkit.createProfile(UUID.randomUUID());
+        profile.setProperty(new ProfileProperty("textures", base64Str));
+
+        SkullMeta itemMeta = (SkullMeta) itemStack.getItemMeta();
+        itemMeta.setPlayerProfile(profile);
+
+        itemStack.setItemMeta(itemMeta);
 
         return itemStack;
     }

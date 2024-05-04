@@ -6,7 +6,7 @@
 
   <groupId>me</groupId>
   <artifactId>SkyblockAPI</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>SkyblockAPI</name>
@@ -27,6 +27,13 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <outputDirectory>C:\Users\adriw\Desktop\1.16.5\plugins</outputDirectory>
+            </configuration>
+        </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
