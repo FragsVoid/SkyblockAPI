@@ -1,5 +1,6 @@
 package me.skyblockapi;
 
+import me.skyblockapi.listeners.MenuListener;
 import me.skyblockapi.listeners.PortalListener;
 import me.skyblockapi.menu.PlayerMenuUtility;
 import me.skyblockapi.message.MessageManager;
@@ -34,6 +35,7 @@ public final class SkyblockAPI extends JavaPlugin {
 
     public void registerEvent() {
         getServer().getPluginManager().registerEvents(new PortalListener(), this);
+        getServer().getPluginManager().registerEvents(new MenuListener(), this);
     }
 
     public static PlayerMenuUtility getPlayerMenuUtilityMap(Player player) {

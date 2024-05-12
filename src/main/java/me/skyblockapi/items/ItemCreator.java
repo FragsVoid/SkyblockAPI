@@ -39,7 +39,9 @@ public class ItemCreator {
         return itemStack;
     }
 
-    private ItemStack createCustomSkull(String base64Str) {
+
+    //with base64
+    public static ItemStack createCustomSkull(String base64Str) {
         ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD);
 
         PlayerProfile profile = Bukkit.createProfile(UUID.randomUUID());
@@ -51,6 +53,16 @@ public class ItemCreator {
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
+    }
+
+    //With player name
+    public static ItemStack createCustomSkull(UUID player) {
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        meta.setOwningPlayer(Bukkit.getOfflinePlayer(player));
+        skull.setItemMeta(meta);
+
+        return skull;
     }
 
     public static ItemStack createItem(Material material, int amount, String name, ArrayList<String> lore) {
